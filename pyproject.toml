@@ -1,0 +1,28 @@
+[project]
+name = "political-ad-analysis"
+version = "0.1.0"
+description = "Annotation and analysis of political advertisements."
+authors = [
+    { name = "Alexander Brady", email = "bradya@ethz.ch" },
+]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "hydra-core>=1.3.2",
+    "pandas>=2.3.3",
+    "sentence-transformers>=5.1.1",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.1",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]  # basics: style, flakes, isort, pyupgrade, bugbear
+ignore = ["E501"]                    # let the formatter handle wrapping

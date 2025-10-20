@@ -1,0 +1,10 @@
+defaults:
+  - data
+  - _self_
+
+model: all-MiniLM-L6-v2
+duplicate_threshold: 0.9
+
+hdbscan_params:
+  min_samples: 5
+  min_cluster_size: 5

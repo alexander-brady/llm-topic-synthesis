@@ -1,0 +1,13 @@
+# @package data
+
+filename: meta-ads.csv
+dir:
+  raw: data/raw
+  processed: data/processed
+  embeddings: data/embeddings
+  clusterer: data/clusterers
+
+col:
+  content: ad_creative_bodies
+
+path: ${dir.processed}/${filename}
