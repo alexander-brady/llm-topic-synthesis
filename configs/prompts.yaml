@@ -1,0 +1,38 @@
+# @package prompts
+
+classify:
+  default: 'Given the following options, choose which one is more relevant to the context. Options: '
+  select: 'Therefore, the fitting option is: '
+
+topic_synthesis:
+  ad_separator: \n-----\n
+  system: 'You are a political analyst. You are given the following set of political ads to analyze. You will assign the ads a topic that best summarizes the key issue discussed in these ads.' 
+  binary: | 
+    Is there a topic in the following list that well describes the key issue discussed in these ads? 
+    Topics: 
+    {{ topics }}     
+    
+    Can the ads can be summarized by one of the previous topics: Answer with "yes" or "no".    
+  none_relevant: 'None of the above topics describe the key issue discussed in these ads. I will provide a new topic.'
+  new_topic: 
+  - 'In three words or less, describe the issue that ads discuss, summarizing the topic. Examples: "Abortion", "Climate Change", etc.'
+  - 'A better topic for these ads is: "' # ' {new_topic}' with stop token="
+
+classification_pipeline: # Multiple Ads
+  ad_separator: \n-----\n
+  system: 'You are a political analyst. You are given the following set of political ads to analyze:'
+  topic: 'Which of these best describes the topic of these ads?\n'
+  leaning: 'The ads are generally about {{ topic }}. Are they mostly in favor of or against {{ topic }}?'
+  
+  moral_foundation: 'Which of the following moral foundations best describes the arguments used in the ads {{ stance }} {{ topic }}?' 
+  summarize: 'Summarize the main talking point of the ads. Do so in a single sentence.'
+  summary: 'The ads argue {{ stance }} {{ topic }} and appeal to the moral foundation of {{ moral_foundation }}. The main argument is {{ summary }}.'
+
+# classification_pipeline: # Single Ad
+  # system: 'You are a political analyst. You are given the following political ad to analyze:'
+  # topic: 'Which of these best describes the topic of this ad?'
+  # leaning: 'The ad is about {{ topic }}. Is it for or against {{ topic }}?'
+  
+  # moral_foundation: 'Which of the following moral foundations best describes the arguments used in the ad {{ stance }} {{ topic }}?' 
+  # summarize: 'Summarize the main talking point of the ad. Do so in a single sentence.'
+  # summary: 'The ad argues {{ stance }} {{ topic }} and appeals to the moral foundation of {{ moral_foundation }}. The main argument is ' # " {generated summary} "

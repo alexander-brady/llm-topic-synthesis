@@ -1,13 +1,14 @@
-"""Embed text data to vector representations using pre-trained models and cluster ads based on similarity."""
+"""Embed text data to vector representations using pre-trained models and cluster ads based on representation."""
 
 import hydra
+import joblib
 import numpy as np
 import pandas as pd
+from hdbscan import HDBSCAN
 from omegaconf import DictConfig, OmegaConf
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.cluster import HDBSCAN
-import joblib
+
 
 def identify_duplicates(embeddings: np.ndarray, threshold: float = 0.95) -> list[int]:
     """Identify duplicate embeddings based on cosine similarity threshold.
@@ -23,7 +24,7 @@ def identify_duplicates(embeddings: np.ndarray, threshold: float = 0.95) -> list
     to_remove = set()
 
     x, y = np.triu_indices_from(similarities, k=1)
-    for i, j in zip(x, y):
+    for i, j in zip(x, y, strict=False):
         if similarities[i, j] >= threshold:
             to_remove.add(j)
 
@@ -34,7 +35,7 @@ def identify_duplicates(embeddings: np.ndarray, threshold: float = 0.95) -> list
 def main(cfg: DictConfig):
     # Load data and model
     df = pd.read_csv(cfg.data.path)
-    model = SentenceTransformer(cfg.model.name)
+    model = SentenceTransformer(cfg.model)
 
     # Generate embeddings
     embeddings = model.encode(df[cfg.data.col.content].tolist(), convert_to_numpy=True, show_progress_bar=True)
@@ -43,12 +44,12 @@ def main(cfg: DictConfig):
     duplicate_indices = identify_duplicates(embeddings, threshold=cfg.duplicate_threshold)
     df_cleaned = df.drop(index=duplicate_indices).reset_index(drop=True)
     embeddings_cleaned = np.delete(embeddings, duplicate_indices, axis=0)
-    
+
     # Cluster embeddings
     cluster_params = OmegaConf.to_container(cfg.hdbscan_params, resolve=True)
-    clusterer = HDBSCAN(**cluster_params)
+    clusterer = HDBSCAN(**cluster_params)  # type: ignore
     clusterer.fit(embeddings_cleaned)
-    
+
     # Add cluster labels to dataframe
     df_cleaned["cluster"] = clusterer.labels_
 
