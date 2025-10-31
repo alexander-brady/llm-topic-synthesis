@@ -2,9 +2,6 @@
 name = "political-ad-analysis"
 version = "0.1.0"
 description = "Annotation and analysis of political advertisements."
-authors = [
-    { name = "Alexander Brady", email = "bradya@ethz.ch" },
-]
 license = { text = "MIT" }
 readme = "README.md"
 requires-python = ">=3.13"
@@ -14,6 +11,8 @@ dependencies = [
     "pandas>=2.3.3",
     "sentence-transformers>=5.1.1",
     "vllm>=0.11.0",
+    "ipykernel>=6.22.0",
+    "ipywidgets>=8.0.6",
 ]
 
 [dependency-groups]
