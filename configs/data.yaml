@@ -15,4 +15,4 @@ path: ${dir.processed}/${filename}.csv
 clusterer_path: ${dir.clusterer}/${filename}_clusterer.pkl
 embeddings_path: ${dir.embeddings}/${filename}_embeddings.pkl
 topics_path: ${dir.topics}/${filename}_topics.txt
-annotation_path: ${dir.processed}/${filename}_annotations.txt
+annotation_path: ${dir.processed}/${filename}_annotations.csv

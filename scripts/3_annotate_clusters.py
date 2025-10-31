@@ -144,7 +144,7 @@ def main(cfg: DictConfig):
 
     # Load the clusterer and cluster parameters
     clusterer = joblib.load(cfg.data.clusterer_path)
-    n_clusters = int(max(clusterer.labels_)) + 1
+    n_clusters = int(max(clusterer.labels_, default=-1) + 1)
     cluster_params = config_to_dict(cfg, "cluster_filter_params")
     logger.info(f"Loaded clusterer from {cfg.data.clusterer_path} with {n_clusters} clusters")
 
