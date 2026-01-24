@@ -1,5 +1,8 @@
 # Political Ad Analysis via LLMs
 
+This repository contains code and data for the paper titled "[Iterative Topic Taxonomy Induction with LLMs: A Case Study of Electoral
+Advertising](https://arxiv.org/pdf/2510.15125)".
+
 This repository contains code for analyzing political advertisements using large language models (LLMs). The analysis includes automatic annotation of ad content, topic classification, and stance analysis.
 
 This codebase is designed to analyze political ads from Meta's Ad Library, focusing on ads related to U.S. politics. However, the methods and tools can be adapted for other datasets and contexts.
@@ -37,3 +40,17 @@ The `config.yaml` file contains various parameters for the various scripts. The 
 - Dataset paths
 - Model specifications
 - Prompt templates
+
+## Citation:
+
+If you find the code, data, and paper useful in your work, please cite:
+
+```
+@article{brady2025iterative,
+  title={Iterative Topic Taxonomy Induction with LLMs: A Case Study of Electoral Advertising},
+  author={Brady, Alexander and Islam, Tunazzina},
+  journal={arXiv preprint arXiv:2510.15125},
+  year={2025}
+}
+
+```
