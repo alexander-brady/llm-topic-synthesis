@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Iterative Topic Taxonomy Induction with LLMs: A Case Study of Electoral Advertising"
+authors:
+  - family-names: Brady
+    given-names: Alexander
+    orcid: https://orcid.org/0009-0003-3392-0452
+  - family-names: Islam
+    given-names: Tunazzina
+    orcid: https://orcid.org/0000-0001-6714-973X
+version: 1.0.0
+type: conference-paper
+year: 2026
+doi: "10.48550/arXiv.2510.15125"
+url: "https://arxiv.org/abs/2510.15125"
+conference:
+  name: "AACL-IJCNLP 2026 (Findings of the Association for Computational Linguistics)"
+publisher:
+  name: "Association for Computational Linguistics"
