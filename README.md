@@ -1,7 +1,7 @@
 # Political Ad Analysis via LLMs
 
 This repository contains code and data for the paper titled "[Iterative Topic Taxonomy Induction with LLMs: A Case Study of Electoral
-Advertising](https://arxiv.org/pdf/2510.15125)".
+Advertising](https://aclanthology.org/2026.findings-aacl.99.pdf)", [AACL-IJCNLP 2026](https://2026.aaclnet.org/)
 
 This repository contains code for analyzing political advertisements using large language models (LLMs). The analysis includes automatic annotation of ad content, topic classification, and stance analysis.
 
@@ -46,11 +46,24 @@ The `config.yaml` file contains various parameters for the various scripts. The 
 If you find the code, data, and paper useful in your work, please cite:
 
 ```
-@article{brady2025iterative,
-  title={Iterative Topic Taxonomy Induction with LLMs: A Case Study of Electoral Advertising},
-  author={Brady, Alexander and Islam, Tunazzina},
-  journal={arXiv preprint arXiv:2510.15125},
-  year={2025}
+@inproceedings{brady-islam-2026-iterative,
+    title = "Iterative Topic Taxonomy Induction with {LLM}s: A Case Study of Electoral Advertising",
+    author = "Brady, Alexander  and
+      Islam, Tunazzina",
+    editor = "Zhang, Yue  and
+      Xu, Ruifeng  and
+      Purwarianti, Ayu  and
+      Rong, Tong  and
+      Suzuki, Jun",
+    booktitle = "Findings of the {A}ssociation for {C}omputational {L}inguistics: {IJCNLP}-{AACL} 2026",
+    month = nov,
+    year = "2026",
+    address = "Hengqin, China",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2026.findings-aacl.99/",
+    doi = "10.18653/2026.findings-aacl.99",
+    pages = "1976--1990",
+    ISBN = "979-8-89176-444-6"
 }
 
 ```
